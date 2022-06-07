@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout=”http://www.ultraq.net.nz/thymeleaf/layout”
+	layout:decorate="~{layout.html}">
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<title>Home Page</title>
+<body>
+	<div th:replace="layout"></div>
+	<div class="container" >
+		<div class="row card-deck">
+			<div class="col" th:each="evento: ${listaEventos}">
+				<div class="card border-dark mb-3" style="max-width: 18rem;" >
+					<img class="bd-placeholder-img card-img-top" style="height: 180px; width: 100%; display: block;" th:src="${evento.imagem}"	alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title"th:text="${evento.nomeEvento}" style="min-height: 100px;"></h5>
+						<p class="card-text" th:utext="${#strings.abbreviate(evento.descricao,100)}" style="min-height: 100px;"></p>
+						<p class="card-text" th:text="'R$ '+ ${evento.preco}"></p>
+						<a href="https://www.sympla.com.br" class="card-text">Saiba mais...</a>
+					</div>						
+				</div>
+			</div>
+		</div>
+		
+	</div> 
+
+
+</body>
+</html>
